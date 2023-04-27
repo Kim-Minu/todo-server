@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
   datasource:
     url: jdbc:mariadb://localhost:3306/toDoList
     username: root
@@ -15,4 +18,5 @@ spring:
       ddl-auto: create
 
 jwt:
-  secretKey: secretKey-test-authorization-jwt-manage-token
+  token-validity-in-seconds: 7776000000 #90일
+  secretKey: json-web-token-secret-key-sign-with-member-api
