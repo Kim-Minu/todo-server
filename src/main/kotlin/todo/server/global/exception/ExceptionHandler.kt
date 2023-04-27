@@ -122,7 +122,7 @@ class ExceptionHandler(
     protected fun handleBusinessException(e: BusinessException): ResponseEntity<ErrorResponse?>? {
 
         val response = ErrorResponse(
-            message = e.errorCode.message,
+            message = e.message ?: e.errorCode.message,
             status = e.errorCode.status,
             code = e.errorCode.code
         )

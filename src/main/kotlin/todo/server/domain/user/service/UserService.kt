@@ -6,7 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import todo.server.domain.user.domain.UserRepository
 import todo.server.domain.user.dto.*
-import todo.server.domain.user.exception.EmailDuplicateException
+import todo.server.domain.user.exception.UserEmailDuplicateException
 import todo.server.domain.user.exception.UserNotFoundException
 import todo.server.domain.user.exception.UserSignInException
 import todo.server.global.jwt.JwtTokenProvider
@@ -36,7 +36,7 @@ class UserService (
         val emailExist = userRepository.existsByEmail(requestDto.email)
 
         if(emailExist){
-            throw EmailDuplicateException(requestDto.email)
+            throw UserEmailDuplicateException(requestDto.email)
         }
 
         val user = userRepository.save(requestDto.toEntity(bCryptPasswordEncoder.encode(requestDto.password)))

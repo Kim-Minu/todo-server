@@ -17,12 +17,7 @@ enum class ErrorCode(
 
     // Member
     EMAIL_DUPLICATION(409, "M001", "이미 사용 중인 이메일입니다."),
-    PHONE_DUPLICATION(409, "M002", "이미 사용 중인 휴대폰 번호입니다."),
     LOGIN_INPUT_INVALID(400, "M003", "아이디 또는 비밀번호를 확인해주세요."),
-    NOT_AUTH_SMS(400, "M004", "휴대폰 번호 인증을 완료해주세요."),
     NOT_FOUND_MEMBER(404, "M004", "등록된 사용자 정보가 없습니다."),
 
-    //SMS
-    AUTH_INVALID(400, "SMS002", "휴대폰 번호 또는 인증 번호를 확인해주세요."),
-    AUTH_EXPIRED_TIME(400, "SMS003", "인증 시간이 만료 되었습니다."),
 }
