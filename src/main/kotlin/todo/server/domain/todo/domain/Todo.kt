@@ -1,23 +1,24 @@
-package todo.server.domain.user.deomain
+package todo.server.domain.todo.domain
 
-import jakarta.persistence.*
+import todo.server.domain.user.domain.User
 import java.time.LocalDateTime
+import javax.persistence.*
 
 @Entity
-class User(
+data class Todo(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
 
     @Column(length = 50, nullable = false)
-    var email: String,
+    var title: String,
 
-    @Column(length = 100, nullable = false)
-    var password: String,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    var user: User,
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 5, nullable = false)
-    var role: Role = Role.USER,
+    @Column(nullable = false)
+    var done: Boolean = false,
 
     @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),
@@ -26,6 +27,4 @@ class User(
     var updatedAt: LocalDateTime = LocalDateTime.now()
 
 ) {
-
-
 }
